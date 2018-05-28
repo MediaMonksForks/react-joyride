@@ -157,7 +157,7 @@ export default class Overlay extends React.Component {
       cursor: disableOverlay ? 'default' : 'pointer',
       height: getDocumentHeight(),
       pointerEvents: this.state.mouseOverSpotlight ? 'none' : 'auto',
-      ...(isLegacy() ? styles.overlayLegacy : styles.overlay),
+      ...(isLegacy() ? (placement === 'center' ? styles.overlayLegacyCentered : styles.overlayLegacy) : styles.overlay),
     };
 
     return (
