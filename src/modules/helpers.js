@@ -1,5 +1,6 @@
 // @flow
 import ReactDOM from 'react-dom';
+import React from 'react';
 import ExecutionEnvironment from 'exenv';
 import is from 'is-lite';
 
@@ -141,6 +142,10 @@ export function isEqual(a: any, b: any): boolean {
       }
 
       t = typeof a[p];
+
+      if (React.isValidElement(a) || React.isValidElement(b)) {
+        return false;
+      }
 
       if (t === 'object' && !isEqual(a[p], b[p])) {
         return false;

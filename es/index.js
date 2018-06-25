@@ -1,11 +1,11 @@
 import ReactDOM from 'react-dom';
+import React from 'react';
 import ExecutionEnvironment from 'exenv';
 import is from 'is-lite';
 import scroll from 'scroll';
 import scrollDoc from 'scroll-doc';
 import getScrollParent from 'scrollparent';
 import deepmerge from 'deepmerge';
-import React from 'react';
 import PropTypes from 'prop-types';
 import treeChanges from 'tree-changes';
 import isRequiredIf from 'react-proptype-conditional-require';
@@ -262,6 +262,10 @@ function isEqual(a, b) {
       }
 
       t = _typeof(a[p]);
+
+      if (React.isValidElement(a) || React.isValidElement(b)) {
+        return false;
+      }
 
       if (t === 'object' && !isEqual(a[p], b[p])) {
         return false;
